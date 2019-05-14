@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/services/auth/auth.service';
+import { AppConstants } from './shared/helpers/constants/constants';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'sms-webapp';
+  title = AppConstants.Titles.AppTitle;
+
+  constructor(public authService: AuthService) { }
+
 }

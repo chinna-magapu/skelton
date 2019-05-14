@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/style.css",
+              "src/assets/css/main.css",
+              "src/assets/css/login.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
