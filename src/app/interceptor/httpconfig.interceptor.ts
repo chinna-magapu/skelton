@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { ErrorDialogService } from '../error-dialog/errordialog.service';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import {
     HttpInterceptor,
     HttpRequest,
@@ -9,12 +9,15 @@ import {
     HttpErrorResponse
 } from '@angular/common/http';
 
+
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+
+
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor() { }
+    constructor(public errorHandlerService: ErrorHandlerService) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token: string = localStorage.getItem('token');
 
@@ -41,7 +44,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                     reason: error && error.error.reason ? error.error.reason : '',
                     status: error.status
                 };
-                // alert(JSON.stringify(error));
+                this.errorHandlerService.openDialog(data);
                 return throwError(error);
             }));
     }

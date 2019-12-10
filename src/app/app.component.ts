@@ -12,6 +12,8 @@ import { AppConstants } from './shared/helpers/constants/constants';
 export class AppComponent {
   title = AppConstants.Titles.AppTitle;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+    // this.authService.login({}).subscribe();
+  }
 
 }
